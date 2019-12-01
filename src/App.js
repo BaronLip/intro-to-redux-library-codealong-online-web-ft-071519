@@ -17,18 +17,24 @@ class App extends Component {
 	}
 }
 
+// Sends the state to a component as props.
 const mapStateToProps = state => {
 	return {
-		items: state.items
+        // Now props.items === is the same as state.items
+        items: state.items
 	};
 };
 
+// Sends dispatches to props.
 const mapDispatchToProps = dispatch => {
 	return {
+        // Now props.increaseCount = () => dispatch({ type: 'INCREASE_COUNT' })
 		increaseCount: () => dispatch({ type: 'INCREASE_COUNT' })
 	};
 };
 
+
+// Using the connect function, from 'react-redux', connects mapStateToProps & mapDispatchToProps to the App component. App component can then use props.items and props.increaseCount as functions.
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
